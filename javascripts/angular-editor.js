@@ -34,7 +34,7 @@
 
         ngModel.$render = function () {
           scope.simditor.focus();
-          $target.prepend(ngModel.$viewValue);
+          $target.html(ngModel.$viewValue);
         };
 
         scope.simditor.on('valuechanged', function(){
