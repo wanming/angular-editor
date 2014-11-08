@@ -26,10 +26,9 @@
           $scope.editor = 'tom';
 
           $scope.clearEditor = function () {
-            console.log('clearEditor...');
             $scope.editor = 'jane....';
           }
-        });  
+        });
 
     }(window));
   </script>
@@ -41,7 +40,7 @@
       <h4>the editor's value:</h4>
       <div>{{editor}}</div>
     </div>
-    <div simditor ng-model="editor"></div>
+    <div simditor ng-model="editor" placeholder="some placeholder"></div>
     <div class="btn-group">
       <button ng-click="clearEditor()">CLEAR</button>
     </div>
