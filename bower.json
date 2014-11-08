@@ -1,0 +1,5 @@
+{
+  "name": "angular-editor",
+  "homepage": "https://github.com/wanming/angular-editor",
+  "main" : ["./javascripts/simditor/simditor-all.js", "./javascripts/angular-editor.js"]
+}
