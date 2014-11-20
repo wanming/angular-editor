@@ -1,5 +1,8 @@
 {
   "name": "angular-editor",
   "homepage": "https://github.com/wanming/angular-editor",
-  "main" : ["./javascripts/simditor/simditor-all.js", "./javascripts/angular-editor.js"]
+  "main" : ["./javascripts/angular-editor.js"],
+  "dependencies": {
+    "simditor": "~2.0.x"
+  } 
 }
