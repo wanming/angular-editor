@@ -26,12 +26,19 @@
         });
 
         function readViewText() {
-          var html = element.find('.simditor-body').html();
-          if (attrs.stripBr && html === '<br>') {
-            html = '';
-          }
+            var html = element.find('.simditor-body').html();
+            var text = element.find('.simditor-body').text();
 
-          ngModel.$setViewValue(html);
+            ngModel.$setViewValue(html);
+
+            if (attrs.ngRequired != undefined && attrs.ngRequired != "false") {
+
+                if(text.trim() === "") {
+                    ngModel.$setValidity("required", false);
+                } else {
+                    ngModel.$setValidity("required", true);
+                }
+            }
         }
 
         var $target = element.find('.simditor-body');
