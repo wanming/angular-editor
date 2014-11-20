@@ -6,19 +6,23 @@
   var directives = angular.module('simditor',[]);
 
   directives.directive('simditor', function () {
+    
+    var TOOLBAR_DEFAULT = ['title', 'bold', 'italic', 'underline', 'strikethrough', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent'];
+    
     return {
       require: "?^ngModel",
       link: function (scope, element, attrs, ngModel) {
         element.append("<div style='height:300px;'></div>");
 
+        var toolbar = scope.$eval(attrs.toolbar) || TOOLBAR_DEFAULT;
         scope.simditor = new Simditor({
-          textarea: element.children()[0],
-          pasteImage: true,
-          toolbar: ['title', 'bold', 'italic', 'underline', 'strikethrough', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent'],
-          defaultImage: 'assets/images/image.png',
-          upload: location.search === '?upload' ? {
-            url: '/upload'
-          } : false
+            textarea: element.children()[0],
+            pasteImage: true,
+            toolbar: toolbar,
+            defaultImage: 'assets/images/image.png',
+            upload: location.search === '?upload' ? {
+                url: '/upload'
+            } : false
         });
 
         function readViewText() {
