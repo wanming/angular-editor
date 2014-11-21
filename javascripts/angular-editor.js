@@ -48,8 +48,8 @@
           $target.prepend(ngModel.$viewValue);
         };
 
-        element.on('blur keyup change', function () {
-          scope.$apply(readViewText);
+        scope.simditor.on('valuechanged', function () {
+            scope.$apply(readViewText);
         });
       }
     };
