@@ -25,9 +25,11 @@
             } : false
         });
 
+        var $target = element.find('.simditor-body');
+        
         function readViewText() {
-            var html = element.find('.simditor-body').html();
-            var text = element.find('.simditor-body').text();
+            var html = $target.html();
+            var text = $target.text();
 
             ngModel.$setViewValue(html);
 
@@ -40,8 +42,6 @@
                 }
             }
         }
-
-        var $target = element.find('.simditor-body');
 
         ngModel.$render = function () {
           scope.simditor.focus();
