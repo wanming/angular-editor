@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <title>angular-editor demo</title>
+  <!-- styles -->
+  <link rel="stylesheet" href="../stylesheets/simditor.css" />
+  <link rel="stylesheet" href="../stylesheets/font-awesome.css" />
+  <!-- opensource libs -->
+  <script src="http://libs.useso.com/js/jquery/2.1.1/jquery.min.js"></script>
+  <script src="http://libs.useso.com/js/angular.js/1.2.9/angular.min.js"></script>
+  <!-- other libs -->
+  <script src="../javascripts/simditor/simditor-all.js"></script>
+  <script src="../javascripts/angular-editor.js"></script>
+
+  <script>
+    (function (window) {
+      'use strict';
+      var angular = window.angular, appName = 'app';
+
+      angular
+        .module(appName, [
+          'simditor'      
+        ])
+        .controller('mainController', function ($scope) {
+          $scope.editor = 'tom';
+
+          $scope.clearEditor = function () {
+            $scope.editor = 'jane....';
+          }
+        });
+
+    }(window));
+  </script>
+</head>
+<body>
+  <h2>angular-editor demo</h2>
+  <div class="container" ng-controller="mainController">
+    <div style="margin: 20px">
+      <h4>the editor's value:</h4>
+      <div>{{editor}}</div>
+    </div>
+    <div simditor ng-model="editor" placeholder="some placeholder"></div>
+    <div class="btn-group">
+      <button ng-click="clearEditor()">CLEAR</button>
+    </div>
+  </div>
+</body>
+</html>

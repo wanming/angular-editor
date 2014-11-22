@@ -1333,6 +1333,7 @@
       this.editor.inputManager.addKeystrokeHandler('8', '*', function(e) {
         var $prevBlockEl, $rootBlock;
         $rootBlock = _this.editor.util.furthestBlockEl();
+        if (!$rootBlock) { return; }
         $prevBlockEl = $rootBlock.prev();
         if ($prevBlockEl.is('hr, .simditor-image') && _this.editor.selection.rangeAtStartOf($rootBlock)) {
           _this.editor.selection.save();

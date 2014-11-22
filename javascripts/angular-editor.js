@@ -16,40 +16,40 @@
 
         var toolbar = scope.$eval(attrs.toolbar) || TOOLBAR_DEFAULT;
         scope.simditor = new Simditor({
-            textarea: element.children()[0],
-            pasteImage: true,
-            toolbar: toolbar,
-            defaultImage: 'assets/images/image.png',
-            upload: location.search === '?upload' ? {
-                url: '/upload'
-            } : false
+          textarea: element.children()[0],
+          pasteImage: true,
+          toolbar: toolbar,
+          defaultImage: 'assets/images/image.png',
+          upload: location.search === '?upload' ? {
+              url: '/upload'
+          } : false
         });
 
         function readViewText() {
-            var html = element.find('.simditor-body').html();
-            var text = element.find('.simditor-body').text();
+          var html = element.find('.simditor-body').html();
+          var text = element.find('.simditor-body').text();
 
-            ngModel.$setViewValue(html);
+          ngModel.$setViewValue(html);
 
-            if (attrs.ngRequired != undefined && attrs.ngRequired != "false") {
+          if (attrs.ngRequired != undefined && attrs.ngRequired != "false") {
 
-                if(text.trim() === "") {
-                    ngModel.$setValidity("required", false);
-                } else {
-                    ngModel.$setValidity("required", true);
-                }
-            }
+              if(text.trim() === "") {
+                  ngModel.$setValidity("required", false);
+              } else {
+                  ngModel.$setValidity("required", true);
+              }
+          }
         }
 
         var $target = element.find('.simditor-body');
 
         ngModel.$render = function () {
           scope.simditor.focus();
-          $target.prepend(ngModel.$viewValue);
+          $target.html(ngModel.$viewValue);
         };
 
         scope.simditor.on('valuechanged', function () {
-            scope.$apply(readViewText);
+          scope.$apply(readViewText);
         });
       }
     };
