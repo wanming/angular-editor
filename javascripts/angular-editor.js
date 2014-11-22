@@ -28,13 +28,12 @@
         var $target = element.find('.simditor-body');
         
         function readViewText() {
-            var html = $target.html();
-            var text = $target.text();
-
-            ngModel.$setViewValue(html);
+            ngModel.$setViewValue($target.html());
 
             if (attrs.ngRequired != undefined && attrs.ngRequired != "false") {
-
+                
+                var text = $target.text();
+                
                 if(text.trim() === "") {
                     ngModel.$setValidity("required", false);
                 } else {
