@@ -25,23 +25,24 @@
           } : false
         });
 
-        function readViewText() {
-          var html = element.find('.simditor-body').html();
-          var text = element.find('.simditor-body').text();
-
-          ngModel.$setViewValue(html);
-
-          if (attrs.ngRequired != undefined && attrs.ngRequired != "false") {
-
-              if(text.trim() === "") {
-                  ngModel.$setValidity("required", false);
-              } else {
-                  ngModel.$setValidity("required", true);
-              }
-          }
-        }
-
         var $target = element.find('.simditor-body');
+        
+        function readViewText() {
+
+            ngModel.$setViewValue($target.html());
+
+            if (attrs.ngRequired != undefined && attrs.ngRequired != "false") {
+                
+                var text = $target.text();
+                
+                if(text.trim() === "") {
+                    ngModel.$setValidity("required", false);
+                } else {
+                    ngModel.$setValidity("required", true);
+                }
+            }
+
+        }
 
         ngModel.$render = function () {
           scope.simditor.focus();
