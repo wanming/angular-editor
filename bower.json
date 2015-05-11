@@ -3,6 +3,5 @@
   "homepage": "https://github.com/wanming/angular-editor",
   "main" : ["./javascripts/angular-editor.js"],
   "dependencies": {
-    "simditor": "~2.0.x"
   } 
 }
