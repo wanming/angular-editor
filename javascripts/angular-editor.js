@@ -15,12 +15,13 @@
         element.append("<div style='height:300px;'></div>");
 
         var toolbar = scope.$eval(attrs.toolbar) || TOOLBAR_DEFAULT;
-        var toolbarFloat = scope.$eval(attrs.toolbarFloat) || true;
+        var toolbarFloat = scope.$eval(attrs.toolbarFloat);
+        var valToolBarFload = toolbarFloat === false ? false : true;
         scope.simditor = new Simditor({
           textarea: element.children()[0],
           pasteImage: true,
           toolbar: toolbar,
-          toolbarFloat : toolbarFloat,
+          toolbarFloat : valToolBarFload,
           defaultImage: 'assets/images/image.png',
           upload: location.search === '?upload' ? {
               url: '/upload'
